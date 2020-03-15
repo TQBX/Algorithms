@@ -9,9 +9,9 @@ public class BubbleSort1 {
 
     public static void main(String[] args) {
         System.out.println("排序前");
-        int[] arr1 = new int[]{6, 9, 8, 3, 2, 11, 15, 16, 18, 19};
-        int[] arr2 = new int[]{6, 9, 8, 3, 2, 11, 15, 16, 18, 19};
-        int[] arr3 = new int[]{6, 9, 8, 3, 2, 11, 15, 16, 18, 19};
+        int[] arr1 = new int[]{8,3,2,9,1};
+        int[] arr2 = new int[]{8,3,2,9,1};
+        int[] arr3 = new int[]{8,3,2,9,1};
         sort(arr1);
         System.out.println("------");
         sort1(arr2);
@@ -20,24 +20,25 @@ public class BubbleSort1 {
     }
 
     private static void sort(int[] arr) {
+        int count =0;
         //最后一轮不需要排序 所以到arr.length-2位置的索引即可
         for (int i = 0; i < arr.length - 1; i++) {
-            System.out.println("第" + (i + 1) + "趟");
             //每轮过后都可以确定一个数 所以arr.length-(i+1）
             for (int j = 0; j < arr.length - i - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
                     arr[j + 1] ^= arr[j];
                     arr[j] ^= arr[j + 1];
                     arr[j + 1] ^= arr[j];
+                    count++;
                 }
-                System.out.println("第" + (j + 1) + "次：" + Arrays.toString(arr));
             }
         }
+        System.out.println("共交换了:"+count);
     }
 
     private static void sort1(int[] arr) {
+        int count = 0;
         for (int i = 0; i < arr.length - 1; i++) {
-            System.out.println("第" + (i + 1) + "趟");
             //优化排序，增加判断位，有序标记
             boolean flag = true;
             for (int j = 0; j < arr.length - 1 - i; j++) {
@@ -48,9 +49,8 @@ public class BubbleSort1 {
                     arr[j + 1] ^= arr[j];
                     //有元素交换，所以还需要进行下一轮排序
                     flag = false;
-
+                    count++;
                 }
-                System.out.println("第" + (j + 1) + "次：" + Arrays.toString(arr));
             }
             //该轮结束后，如果顺序没改动说明已经排序结束
             if (flag) {
@@ -59,9 +59,11 @@ public class BubbleSort1 {
             }
 
         }
+        System.out.println("共交换了:"+count);
     }
 
     private static void sort2(int[] arr) {
+        int count = 0;
         // 最后一次交换的下标
         int lastSwapIndex = 0;
         // 无序数组的边界，每次比较比到这里为止
@@ -81,6 +83,7 @@ public class BubbleSort1 {
                     flag = false;
                     // 最后一次交换元素的位置
                     lastSwapIndex = j;
+                    count++;
                 }
                 System.out.println("  第" + (j + 1) + "次：" + Arrays.toString(arr));
             }
@@ -92,6 +95,7 @@ public class BubbleSort1 {
                 break;
             }
         }
+        System.out.println("共交换了:"+count);
     }
 
     private static void mysort(int[] arr){
