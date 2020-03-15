@@ -105,14 +105,13 @@ public class ImageUtils {
         }
     }
 
-    //非线性动态调整
+    //非线性动态范围调整
     public static void changeWithNoneLiner(double[][] arr) {
         int row = arr.length;
         int col = arr[0].length;
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
-
                 arr[i][j] = (Math.log10(arr[i][j] + 1)) * 105;
             }
         }
@@ -192,10 +191,7 @@ public class ImageUtils {
             }
         }
 
-
-
     }
-
 
     //显示图
     private static void showHistogramArr(double[][] arr) {
