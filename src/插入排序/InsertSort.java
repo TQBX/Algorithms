@@ -10,7 +10,7 @@ public class InsertSort {
 
     public static void main(String[] args) {
 
-        int[] arr = {1,9,4,6,5,-4};
+        int[] arr = {8,3,2,9,1};
         insertSort(arr);
         System.out.println(Arrays.toString(arr));
     }
@@ -21,7 +21,7 @@ public class InsertSort {
 
     //直到没有前面元素大为止，此时将当前位置赋值为current，arr[1] = current = 2,结果便是[1,2,3]
     private static void insertSort(int[] arr){
-
+        int count = 0;
         for(int i = 1;i<arr.length;i++){
             int current = arr[i];
 
@@ -30,9 +30,11 @@ public class InsertSort {
             for(k = i-1;k>=0&& arr[k]>current;k--){
 
                 arr[k+1] = arr[k];
+                count++;
             }
 
             arr[k+1] = current;
         }
+        System.out.println(count);
     }
 }
